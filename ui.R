@@ -109,7 +109,7 @@ shinyUI(
                                          shiny::p("This report I aimed to visualize the \"Arrests, by State, 2013\" 
                                                 FBI data that can be 
                                                 downloaded from"), 
-                                                a("https://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2013/crime-in-the-u.s.-2013/tables/table-69/table_69_arrest_by_state_2013.xls"),
+                                                a(href = "https://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2013/crime-in-the-u.s.-2013/tables/table-69/table_69_arrest_by_state_2013.xls","https://www.fbi.gov/about-us/cjis/ucr/crime-in-the-u.s/2013/crime-in-the-u.s.-2013/tables/table-69/table_69_arrest_by_state_2013.xls"),
                                                 p("The data was devided into three tables: Total(data for all ages), Under 18 and Over 18(for juveniles and not)."),
                                                 p("The application consists of four main tabs and two of them have three sub tabs inside:"),
                                        
@@ -121,7 +121,8 @@ shinyUI(
                                          p("shows the state map user had selected and a pie chart of most often arrests in that state. The side panel also has all types of crimes available in the data base. By selecting types of crimes and pressing \"Show\" the  user views only the crime types he/she interested in."),
                                          p("                       - Compare States        "),
                                          p("lets users to compare up to three states and up to three crimes. The scale radio button offers the ability to log scale the data to be able to view  figures of the same type that differ greatly."),
-                                             p("            2. ",tags$span(style="color:blue", "Description")),
+                                         p("Note: scaled data is only used in a plot, not in table view!!!"),    
+                                         p("            2. ",tags$span(style="color:blue", "Description")),
                                                 p("        3. ",tags$span(style="color:blue", "How to use")),
                                          p("Here you can find an image guide on how to use the application. The guide is devided into the same three tabs as the Report page for ease of navigation"),                
                                                p("             - Arrests U.S. map"),        
@@ -191,7 +192,7 @@ shinyUI(
                 tabPanel("Source Code",
                          fluidPage(
                                         h3("For the source code please visit:"),
-                                        h3("")
+                                        a("https://github.com/dimakg/ArrestsUSA", href = "https://github.com/dimakg/ArrestsUSA")
                                  )
                          )
         )

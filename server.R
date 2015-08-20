@@ -63,7 +63,7 @@ shinyServer(
         
         ##Inside tab 3
         output$plt <- renderGvis(
-                        gvisColumnChart(data = compare(), xvar = "State", 
+                        gvisColumnChart(data = compare()[["data"]], xvar = "State", 
                                 yvar = c(input$crimeId1,input$crimeId2,input$crimeId3),
                                 options=list(
                                         legend = "bottom",
@@ -76,7 +76,7 @@ shinyServer(
         
         output$gtab <- renderGvis(
                         gvisTable(
-                                     data = compare()
+                                     data = compare()[["table"]]
                                 )
                 )
         
@@ -114,11 +114,14 @@ shinyServer(
                 data = processData()[["Total"]];
                 data<-filter(data, State==input$stateId1|State==input$stateId2|State==input$stateId3);
                 data<-data[,c("State",input$crimeId1,input$crimeId2,input$crimeId3)];
+                dataTable <- as.data.frame(data);
                 if(input$scale=="Yes"){
                         scaled<-log(data[,c(input$crimeId1,input$crimeId2,input$crimeId3)]+1);
                         data<-cbind(data["State"],scaled);
                 }
                 data<-as.data.frame(data);
+                dlist<-list("data" = data, "table" = dataTable)
+                dlist
         })
 
         pieData <- reactive({
